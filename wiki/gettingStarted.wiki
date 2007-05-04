@@ -1,4 +1,5 @@
 #summary linking wiiremote framework
+#labels osx,wii,osc
 
 = linking wiiremote framework =
 
