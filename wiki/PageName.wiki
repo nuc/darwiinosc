@@ -2,12 +2,14 @@
 
 = Introduction =
 
-Add your content here.
+darwiinremoteOSC is using the wiiremote framework which is available at sourceforge <a href="http://sourceforge.net/project/showfiles.php?group_id=183966" target="_blank">here</a>. to use the framework with the provided xcode project, put the framework into the folder ../../libs/frameworks (starting from your xcode project file).
 
 
+/*
 = Details =
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+*/
