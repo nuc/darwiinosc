@@ -226,7 +226,7 @@ void SetLED(void *context, int arglen, const void *args,
 	[discovery setDelegate:self];
 	[discovery start];
 	[drawer open];
-	[textView setString:@"\nDarwiinRemote OSC 0.1.0\ndefault osc remote address: 127.0.0.1:5600 (make changes in the preferences)\ndefault osc receiving port is 5601\n\nPlease press button 1 and button 2 simultaneously"];
+	[textView setString:@"\nDarwiinRemote OSC 0.1.1\ndefault osc remote address: 127.0.0.1:5600 (make changes in the preferences)\ndefault osc receiving port is 5601\n\nPlease press button 1 and button 2 simultaneously"];
 	point.x = 0;
 	point.y = 0;
 	previousPoint.x = 0; 
@@ -410,9 +410,10 @@ void SetLED(void *context, int arglen, const void *args,
 		[port sendTo:"/wii/button/two" types:"i", isPressedInt];
 
 	}else if (type == WiiNunchukCButton){
-		[port sendTo:"/nunchuk/nunchuk/c" types:"i", isPressedInt];
+		[port sendTo:"/nunchuk/button/c" types:"i", isPressedInt];
 	}else if (type == WiiNunchukZButton){
-		[port sendTo:"/nunchuk/nunchuk/z" types:"i", isPressedInt];
+		[port sendTo:"/nunchuk/button/z" types:"i", isPressedInt];
+
 	}
 }
 
@@ -420,7 +421,7 @@ void SetLED(void *context, int arglen, const void *args,
 
 - (void) joyStickChanged:(WiiJoyStickType)type tiltX:(unsigned char)tiltX tiltY:(unsigned char)tiltY wiiRemote:(WiiRemote*)wiiRemote {
 	if (type == WiiNunchukJoyStick){
-		
+		[port sendTo:"/nunchuk/joystick" types:"ff", (float)tiltX,(float)tiltY];
 	}
 }
 
@@ -430,7 +431,6 @@ void SetLED(void *context, int arglen, const void *args,
 	if (type == WiiNunchukAccelerationSensor){
 		[graphView2 setData:accX y:accY z:accZ];
 		[port sendTo:"/nunchuk/acc" types:"fff", (float)accX,(float)accY,(float)accZ];
-		
 		return;
 	}
 	
