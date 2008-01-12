@@ -226,7 +226,7 @@ void SetLED(void *context, int arglen, const void *args,
 	[discovery setDelegate:self];
 	[discovery start];
 	[drawer open];
-	[textView setString:@"\nDarwiinRemote OSC 0.1.1\ndefault osc remote address: 127.0.0.1:5600 (make changes in the preferences)\ndefault osc receiving port is 5601\n\nPlease press button 1 and button 2 simultaneously"];
+	[textView setString:@"\nDarwiinRemote OSC 0.2.1 \ndefault osc remote address: 127.0.0.1:5600 (make changes in the preferences)\ndefault osc receiving port is 5601\n\nPlease press button 1 and button 2 simultaneously"];
 	point.x = 0;
 	point.y = 0;
 	previousPoint.x = 0; 
@@ -268,7 +268,7 @@ void SetLED(void *context, int arglen, const void *args,
 	[wiimote setDelegate:self];
 	[textView setString:[NSString stringWithFormat:@"%@\n===== Connected to WiiRemote =====", [textView string]]];
 
-	[wiimote setLEDEnabled1:YES enabled2:NO enabled3:NO enabled4:NO];
+	[wiimote setLEDEnabled1:NO enabled2:YES enabled3:NO enabled4:NO];
 	[wiimote setMotionSensorEnabled:YES];
 	//[wiimote setIRSensorEnabled:YES];
 	[discovery stop];
@@ -279,6 +279,7 @@ void SetLED(void *context, int arglen, const void *args,
 		
 	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 }
+
 
 - (void) WiiRemoteDiscoveryError:(int)code {
 	[textView setString:[NSString stringWithFormat:@"%@\n===== WiiRemoteDiscovery error (%d) =====", [textView string], code]];
@@ -295,6 +296,35 @@ void SetLED(void *context, int arglen, const void *args,
 	[textView setString:[NSString stringWithFormat:@"%@\nPlease press the synchronize button", [textView string]]];
 	[port sendTo:"/wii/connected" types:"i", 0];	
 }
+
+
+- (void) rawIRData:(IRData[4])irData  wiiRemote:(WiiRemote*)wiiRemote{
+		
+		[irPoint1X setStringValue: [NSString stringWithFormat:@"%00X", irData[0].x]];		
+		[irPoint1Y setStringValue: [NSString stringWithFormat:@"%00X", irData[0].y]];		
+		[irPoint1Size setStringValue: [NSString stringWithFormat:@"%00X", irData[0].s]];		
+
+		[irPoint2X setStringValue: [NSString stringWithFormat:@"%00X", irData[1].x]];		
+		[irPoint2Y setStringValue: [NSString stringWithFormat:@"%00X", irData[1].y]];		
+		[irPoint2Size setStringValue: [NSString stringWithFormat:@"%00X", irData[1].s]];		
+
+		[irPoint3X setStringValue: [NSString stringWithFormat:@"%00X", irData[2].x]];		
+		[irPoint3Y setStringValue: [NSString stringWithFormat:@"%00X", irData[2].y]];		
+		[irPoint3Size setStringValue: [NSString stringWithFormat:@"%00X", irData[2].s]];		
+	
+		[irPoint4X setStringValue: [NSString stringWithFormat:@"%00X", irData[3].x]];		
+		[irPoint4Y setStringValue: [NSString stringWithFormat:@"%00X", irData[3].y]];		
+		[irPoint4Size setStringValue: [NSString stringWithFormat:@"%00X", irData[3].s]];
+		
+		
+		[port sendTo:"/wii/irdata" types:"ffffffffffff", 
+		(float)irData[0].x/1023,(float)irData[0].y/1023,(float)irData[0].s,
+		(float)irData[1].x/1023,(float)irData[1].y/1023,(float)irData[1].s,
+		(float)irData[2].x/1023,(float)irData[2].y/1023,(float)irData[2].s,
+		(float)irData[3].x/1023,(float)irData[3].y/1023,(float)irData[3].s
+		];
+}
+
 
 - (void) irPointMovedX:(float)px Y:(float)py  wiiRemote:(WiiRemote*)wiiRemote{
 	if (mouseEventMode != 2)
@@ -413,7 +443,6 @@ void SetLED(void *context, int arglen, const void *args,
 		[port sendTo:"/nunchuk/button/c" types:"i", isPressedInt];
 	}else if (type == WiiNunchukZButton){
 		[port sendTo:"/nunchuk/button/z" types:"i", isPressedInt];
-
 	}
 }
 
@@ -421,9 +450,26 @@ void SetLED(void *context, int arglen, const void *args,
 
 - (void) joyStickChanged:(WiiJoyStickType)type tiltX:(unsigned char)tiltX tiltY:(unsigned char)tiltY wiiRemote:(WiiRemote*)wiiRemote {
 	if (type == WiiNunchukJoyStick){
-		[port sendTo:"/nunchuk/joystick" types:"ff", (float)tiltX,(float)tiltY];
+		unsigned short max = 0xE0;
+		unsigned short center = 0x80;
+		
+		float shiftedX = (tiltX * 1.0) - (center * 1.0);
+		float shiftedY = (tiltY * 1.0) - (center * 1.0);
+		
+		float scaledX = (shiftedX * 1.0) / ((max - center) * 1.0);
+		float scaledY = (shiftedY * 1.0) / ((max - center) * 1.0);
+		
+		// NSLog(@"Joystick X = %f  Y= %f", scaledX, scaledY);
+		//[joystickQCView setValue:[NSNumber numberWithFloat: scaledX] forInputKey:[NSString stringWithString:@"X_Position"]];
+		//[joystickQCView setValue:[NSNumber numberWithFloat: scaledY] forInputKey:[NSString stringWithString:@"Y_Position"]];
+		
+		//[joystickX setStringValue: [NSString stringWithFormat:@"%00X", tiltX]];		
+		//[joystickY setStringValue: [NSString stringWithFormat:@"%00X", tiltY]];	
+		[port sendTo:"/nunchuk/joystick" types:"ff", (float)scaledX,(float)scaledY];
 	}
 }
+
+
 
 
 
@@ -431,6 +477,23 @@ void SetLED(void *context, int arglen, const void *args,
 	if (type == WiiNunchukAccelerationSensor){
 		[graphView2 setData:accX y:accY z:accZ];
 		[port sendTo:"/nunchuk/acc" types:"fff", (float)accX,(float)accY,(float)accZ];
+		tmpAccX = accX;
+		tmpAccY = accY;
+		tmpAccZ = accZ;
+		// values from the preset
+		x0 = 128; //data.accX_zero;
+		x3 = 153; //data.accX_1g;
+		y0 = 129; //data.accY_zero;
+		y2 = 154; //data.accY_1g;
+		
+		double ax = (double)(accX - x0) / (x3 - x0);
+		double ay = (double)(accY - y0) / (y2 - y0);
+	
+		double roll = atan(ax) * 180.0 / 3.14 * 2;
+		double pitch = atan(ay) * 180.0 / 3.14 * 2;	
+		
+		// send orientation to a remote OSC address
+		[port sendTo:"/nunchuk/orientation" types:"ff", (float)roll,(float)pitch];
 		return;
 	}
 	
@@ -552,7 +615,6 @@ void SetLED(void *context, int arglen, const void *args,
 	
 	return NSTerminateNow;
 }
-
 
 - (IBAction)openKeyConfiguration:(id)sender{
 	[NSApp beginSheet:preferenceWindow

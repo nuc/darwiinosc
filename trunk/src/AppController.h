@@ -57,6 +57,23 @@
 	IBOutlet NSButton* oscOKbutton;
 	
 	
+		IBOutlet NSTextField* irPoint1X;
+	IBOutlet NSTextField* irPoint1Y;
+	IBOutlet NSTextField* irPoint1Size;
+
+	IBOutlet NSTextField* irPoint2X;
+	IBOutlet NSTextField* irPoint2Y;
+	IBOutlet NSTextField* irPoint2Size;
+
+	IBOutlet NSTextField* irPoint3X;
+	IBOutlet NSTextField* irPoint3Y;
+	IBOutlet NSTextField* irPoint3Size;
+
+	IBOutlet NSTextField* irPoint4X;
+	IBOutlet NSTextField* irPoint4Y;
+	IBOutlet NSTextField* irPoint4Size;
+	
+	
 	WiiRemoteDiscovery *discovery;
 	WiiRemote* wii;
 	OSCPort* port;

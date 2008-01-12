@@ -10,6 +10,7 @@
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Release;
+		activeBuildStyle = E1E290AA0D3875E7006DA2CF /* Development */;
 		activeExecutable = E18CD3FD0B88534700DD7E2F /* DarwiinRemote */;
 		activeTarget = 8D1107260486CEB800E47090 /* DarwiinRemote */;
 		addToTargets = (
@@ -79,12 +80,10 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 199932148;
-			PBXWorkspaceStateSaveDate = 199932148;
+			PBXPerProjectTemplateStateSaveDate = 221804286;
+			PBXWorkspaceStateSaveDate = 221804286;
 		};
 		perUserProjectItems = {
-			E11F54930BEAB92600AD9CDE /* PBXTextBookmark */ = E11F54930BEAB92600AD9CDE /* PBXTextBookmark */;
-			E11F54AF0BEABF2800AD9CDE /* PBXTextBookmark */ = E11F54AF0BEABF2800AD9CDE /* PBXTextBookmark */;
 			E1CCFEDB0BBCCA780029B8EB /* PBXTextBookmark */ = E1CCFEDB0BBCCA780029B8EB /* PBXTextBookmark */;
 			E1CF0D070BBD3EBD00B0F8F5 /* PBXTextBookmark */ = E1CF0D070BBD3EBD00B0F8F5 /* PBXTextBookmark */;
 			E1CF0D080BBD3EBD00B0F8F5 /* PBXTextBookmark */ = E1CF0D080BBD3EBD00B0F8F5 /* PBXTextBookmark */;
@@ -92,6 +91,12 @@
 			E1CF0D0B0BBD3EBD00B0F8F5 /* PBXTextBookmark */ = E1CF0D0B0BBD3EBD00B0F8F5 /* PBXTextBookmark */;
 			E1CF0D0C0BBD3EBD00B0F8F5 /* PBXTextBookmark */ = E1CF0D0C0BBD3EBD00B0F8F5 /* PBXTextBookmark */;
 			E1CF0D0E0BBD3EBD00B0F8F5 /* PBXTextBookmark */ = E1CF0D0E0BBD3EBD00B0F8F5 /* PBXTextBookmark */;
+			E1E291050D3879C9006DA2CF /* PBXTextBookmark */ = E1E291050D3879C9006DA2CF /* PBXTextBookmark */;
+			E1E291060D3879C9006DA2CF /* PBXTextBookmark */ = E1E291060D3879C9006DA2CF /* PBXTextBookmark */;
+			E1E291080D3879C9006DA2CF /* PBXBookmark */ = E1E291080D3879C9006DA2CF /* PBXBookmark */;
+			E1E291090D3879C9006DA2CF /* PBXTextBookmark */ = E1E291090D3879C9006DA2CF /* PBXTextBookmark */;
+			E1E2910A0D3879C9006DA2CF /* PBXTextBookmark */ = E1E2910A0D3879C9006DA2CF /* PBXTextBookmark */;
+			E1E2910C0D3879C9006DA2CF /* PBXTextBookmark */ = E1E2910C0D3879C9006DA2CF /* PBXTextBookmark */;
 		};
 		sourceControlManager = E18CD41B0B88536E00DD7E2F /* Source Control */;
 		userBuildSettings = {
@@ -114,17 +119,17 @@
 	};
 	5317449A0B240DD500579963 /* AppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1844, 8960}}";
-			sepNavSelRange = "{250, 0}";
-			sepNavVisRect = "{{0, 3}, {866, 485}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1844, 9828}}";
+			sepNavSelRange = "{5897, 0}";
+			sepNavVisRect = "{{0, 0}, {866, 481}}";
 			sepNavWindowFrame = "{{15, 39}, {1093, 834}}";
 		};
 	};
 	5335B3460B3C73F800B21C9A /* PreferenceWindow.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {635, 706}}";
+			sepNavIntBoundsRect = "{{0, 0}, {866, 481}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRect = "{{0, 0}, {635, 706}}";
+			sepNavVisRect = "{{0, 0}, {866, 481}}";
 		};
 	};
 	53C573530B24870B00D36527 /* GraphView.h */ = {
@@ -161,26 +166,6 @@
 			sepNavVisRect = "{{0, 0}, {866, 706}}";
 			sepNavWindowFrame = "{{15, 39}, {1093, 834}}";
 		};
-	};
-	E11F54930BEAB92600AD9CDE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5317449A0B240DD500579963 /* AppController.m */;
-		name = "AppController.m: 18";
-		rLen = 0;
-		rLoc = 250;
-		rType = 0;
-		vrLen = 783;
-		vrLoc = 0;
-	};
-	E11F54AF0BEABF2800AD9CDE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5317449A0B240DD500579963 /* AppController.m */;
-		name = "AppController.m: 18";
-		rLen = 0;
-		rLoc = 250;
-		rType = 0;
-		vrLen = 538;
-		vrLoc = 0;
 	};
 	E152C0800B88584E0056409A /* OSCPort.h */ = {
 		uiCtxt = {
@@ -316,5 +301,71 @@
 		rType = 0;
 		vrLen = 1362;
 		vrLoc = 504;
+	};
+	E1E291050D3879C9006DA2CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5317449A0B240DD500579963 /* AppController.m */;
+		name = "AppController.m: 229";
+		rLen = 0;
+		rLoc = 5897;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 0;
+	};
+	E1E291060D3879C9006DA2CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E1E291070D3879C9006DA2CF /* WiiRemote.h */;
+		name = "(null): 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 0;
+	};
+	E1E291070D3879C9006DA2CF /* WiiRemote.h */ = {
+		isa = PBXFileReference;
+		name = WiiRemote.h;
+		path = /Users/andreas/Documents/code/wii/WiiRemoteFramework/build/Release/WiiRemote.framework/Headers/WiiRemote.h;
+		sourceTree = "<absolute>";
+	};
+	E1E291080D3879C9006DA2CF /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5335B3460B3C73F800B21C9A /* PreferenceWindow.m */;
+	};
+	E1E291090D3879C9006DA2CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5317449A0B240DD500579963 /* AppController.m */;
+		name = "AppController.m: 229";
+		rLen = 0;
+		rLoc = 5897;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 0;
+	};
+	E1E2910A0D3879C9006DA2CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E1E2910B0D3879C9006DA2CF /* WiiRemote.h */;
+		name = "(null): 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 0;
+	};
+	E1E2910B0D3879C9006DA2CF /* WiiRemote.h */ = {
+		isa = PBXFileReference;
+		name = WiiRemote.h;
+		path = /Users/andreas/Documents/code/wii/WiiRemoteFramework/build/Release/WiiRemote.framework/Headers/WiiRemote.h;
+		sourceTree = "<absolute>";
+	};
+	E1E2910C0D3879C9006DA2CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5335B3460B3C73F800B21C9A /* PreferenceWindow.m */;
+		name = "PreferenceWindow.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 213;
+		vrLoc = 0;
 	};
 }
