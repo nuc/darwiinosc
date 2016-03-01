@@ -1,0 +1,3 @@
+# linking wiiremote framework #
+
+darwiinremoteOSC is using the wiiremote framework which is available at sourceforge http://sourceforge.net/project/showfiles.php?group_id=183966. to use the wiiremote framework with the provided darwiinremoteOSC xcode project, put the framework into the folder ../../libs/frameworks (starting from the darwiinremoteOSC xcode project file).
